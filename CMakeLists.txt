@@ -5,5 +5,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(code main.cpp)
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-  target_compile_options(code PRIVATE -O2 -pipe -static -s)
+  # Optimize and strip symbols; avoid static linking to reduce portability issues
+  target_compile_options(code PRIVATE -O2 -pipe -s)
 endif()
